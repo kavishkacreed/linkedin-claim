@@ -1,6 +1,6 @@
 # Hosting & Database Setup Guide
 
-Follow this guide to host your LinkedIn-themed Claim Dashboard for **100% free** using **Supabase** (Database) and **Render** (Hosting).
+Follow this guide to host your LinkedIn-themed Claim Dashboard for **100% free** using **Supabase** (Database) and **Vercel** (Hosting).
 
 ---
 
@@ -36,7 +36,7 @@ CREATE TABLE claim_codes (
 2. Go to **API**.
 3. Copy the following credentials:
    - **Project URL** (under Project API keys)
-   - **service_role key** (Click **Reveal** next to it and copy it. **Do not share this key publicly**; it gives full read/write bypass to the database, which is required for our backend CLI and server).
+   - **service_role key** (Click **Reveal** next to the `default` key under **Secret keys** at the bottom, or select the **Legacy anon, service_role API keys** tab and copy `service_role`).
 
 ---
 
@@ -46,7 +46,7 @@ CREATE TABLE claim_codes (
 2. Populate the fields with your Supabase credentials:
    ```env
    SUPABASE_URL=https://your-project-id.supabase.co
-   SUPABASE_KEY=your-service-role-key-here
+   SUPABASE_KEY=your-supabase-service-role-key-here
    TARGET_URL=https://www.linkedin.com/premium/redeem-v3/?_ed=...
    ```
 3. Test generating your first batch of codes locally using the CLI manager:
@@ -57,36 +57,35 @@ CREATE TABLE claim_codes (
 
 ---
 
-## Part 4: Host for FREE on Render.com
+## Part 4: Host for FREE on Vercel
 
-Render is a modern hosting platform that can run our Node.js Express server directly from GitHub.
+Vercel is a modern serverless hosting platform that can host our Node.js application for free.
 
-### 1. Push Your Code to GitHub
-1. Create a **private** repository on GitHub (e.g., `linkedin-claim-dashboard`).
-2. Push the files in this directory to your repository.
-   * *Note:* Ensure your `.env` file is in your `.gitignore` so your private Supabase key is **never** uploaded to GitHub.
+### 1. Push the updated code to GitHub
+Run the following commands in your local terminal inside `linkedin-claim` directory:
+```bash
+git add .
+git commit -m "Add Vercel configuration"
+git push
+```
 
-### 2. Deploy to Render
-1. Go to [Render.com](https://render.com/) and log in/sign up.
-2. Click **New +** in the top right and select **Web Service**.
-3. Connect your GitHub account and select your repository.
-4. Set the following configuration values:
-   - **Name:** `linkedin-claim` (or any name you prefer)
-   - **Region:** Choose a region close to your buyers.
-   - **Branch:** `main` (or whatever branch you pushed to)
-   - **Root Directory:** (leave blank, it defaults to the root of the repository)
-   - **Runtime:** `Node`
-   - **Build Command:** `npm install`
-   - **Start Command:** `npm start`
-   - **Instance Type:** Select **Free** ($0/month).
+### 2. Deploy to Vercel
+1. Go to [Vercel.com](https://vercel.com/) and sign up for a free Hobby account (you can log in using your GitHub account).
+2. Click **Add New** -> **Project**.
+3. Import your `linkedin-claim` GitHub repository.
+4. On the **Configure Project** screen:
+   - **Framework Preset:** Select **Other**.
+   - **Root Directory:** (leave blank, it defaults to the root of the repo)
+5. Expand the **Environment Variables** section and add the following keys and values:
+   - `SUPABASE_URL` = (your Supabase URL)
+   - `SUPABASE_KEY` = (your Supabase Service Role Key)
+   - `TARGET_URL` = (your LinkedIn Premium coupon URL)
+6. Click **Deploy**.
 
-### 3. Add Environment Variables on Render
-Before clicking deploy, scroll down and click **Advanced** -> **Add Environment Variable**. Add the following variables:
-1. `SUPABASE_URL` = (your Supabase URL)
-2. `SUPABASE_KEY` = (your Supabase Service Role Key)
-3. `TARGET_URL` = (your LinkedIn Premium coupon URL)
+Vercel will build and deploy your app in seconds and give you a public URL (e.g., `https://linkedin-claim.vercel.app`).
 
-### 4. Deploy!
-Click **Create Web Service**. Render will install Node.js, install dependencies, start your server, and give you a public URL (e.g., `https://linkedin-claim.onrender.com`).
-
-Your buyers can now go to this public URL, enter their code, and activate their premium!
+### 3. Add Custom Domain (Optional)
+1. Go to your Vercel Project dashboard.
+2. Navigate to **Settings** -> **Domains**.
+3. Enter your custom domain/subdomain (e.g., `claim.yourdomain.com`) and click **Add**.
+4. Configure your domain registrar (GoDaddy, Namecheap, etc.) with the CNAME record Vercel provides.
