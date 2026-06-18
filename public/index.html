@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Activate LinkedIn Premium | Redemption Portal</title>
+  <meta name="description" content="Redeem your single-use LinkedIn Premium activation code and unlock Premium Career or Business features instantly.">
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="https://static.licdn.com/aero-v1/sc/h/al2o9zrvru7aqj8e1x2rzsrca">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Source+Sans+3:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="logo-group">
+        <!-- LinkedIn Logo SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="logo-linkedin" width="34" height="34">
+          <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.7a1.8 1.8 0 111.8-1.8 1.8 1.8 0 01-1.8 1.8zM19 19h-3v-4.7c0-1.1 0-2.6-1.6-2.6-1.6 0-1.9 1.2-1.9 2.5V19h-3v-9h2.9v1.2h.1c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7z" fill="#0a66c2"/>
+        </svg>
+        <span class="logo-premium">PREMIUM</span>
+      </div>
+      <div class="navbar-links">
+        <a href="https://www.linkedin.com/help/linkedin" target="_blank" rel="noopener noreferrer">Help Center</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-content">
+    <div class="card-container">
+      <div class="premium-badge-container">
+        <!-- LinkedIn Logo SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="middle-linkedin-logo" width="64" height="64">
+          <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.7a1.8 1.8 0 111.8-1.8 1.8 1.8 0 01-1.8 1.8zM19 19h-3v-4.7c0-1.1 0-2.6-1.6-2.6-1.6 0-1.9 1.2-1.9 2.5V19h-3v-9h2.9v1.2h.1c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7z" fill="#0a66c2"/>
+        </svg>
+      </div>
+
+      <h1 class="card-title">Claim Your LinkedIn Premium</h1>
+      <p class="card-subtitle">Unlock exclusive access to LinkedIn Premium Career, Business, and networking tools. Enter your activation code below to redeem.</p>
+
+      <form id="claim-form" class="claim-form">
+        <div class="input-group">
+          <label for="claim-code" class="input-label">Activation Code</label>
+          <input 
+            type="text" 
+            id="claim-code" 
+            name="claimCode" 
+            placeholder="e.g. LNKD-XXXX-XXXX" 
+            required 
+            autocomplete="off" 
+            autofocus
+            maxlength="20"
+          >
+          <div id="error-message" class="error-message"></div>
+        </div>
+
+        <button type="submit" id="btn-submit" class="btn-primary">
+          <span class="btn-text">Activate Premium</span>
+          <span class="spinner hidden"></span>
+        </button>
+      </form>
+
+      <div class="info-alert">
+        <div class="alert-icon">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20">
+            <path d="M12 2a10 10 0 1010 10A10 10 0 0012 2zm1 14h-2v-6h2zm0-8h-2V6h2z" fill="#0077b5"/>
+          </svg>
+        </div>
+        <div class="alert-content">
+          <h3 class="alert-title">Important Activation Notice</h3>
+          <p class="alert-text">Make sure you are logged into your target LinkedIn account on this browser before activating. Once claimed, the premium coupon is instantly bound to the active account and cannot be transferred.</p>
+        </div>
+      </div>
+      
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="https://www.linkedin.com/legal/user-agreement" target="_blank" rel="noopener noreferrer">User Agreement</a>
+      <a href="https://www.linkedin.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+      <a href="https://www.linkedin.com/legal/cookie-policy" target="_blank" rel="noopener noreferrer">Cookie Policy</a>
+      <a href="https://www.linkedin.com/help/linkedin" target="_blank" rel="noopener noreferrer">Customer Support</a>
+    </div>
+    <p class="footer-copyright">LinkedIn © 2026</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
