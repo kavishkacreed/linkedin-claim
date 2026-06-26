@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Dashboard | Redemption Logs</title>
+  <link rel="stylesheet" href="admin.css">
+  <link rel="icon" type="image/png" href="https://static.licdn.com/aero-v1/sc/h/al2o9zrvru7aqj8e1x2rzsrca">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Source+Sans+3:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  
+  <header class="navbar">
+    <div class="navbar-container">
+      <div class="logo-group">
+        <!-- LinkedIn Logo SVG -->
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" class="logo-linkedin" width="30" height="30">
+          <path d="M20.5 2h-17A1.5 1.5 0 002 3.5v17A1.5 1.5 0 003.5 22h17a1.5 1.5 0 001.5-1.5v-17A1.5 1.5 0 0020.5 2zM8 19H5v-9h3zM6.5 8.7a1.8 1.8 0 111.8-1.8 1.8 1.8 0 01-1.8 1.8zM19 19h-3v-4.7c0-1.1 0-2.6-1.6-2.6-1.6 0-1.9 1.2-1.9 2.5V19h-3v-9h2.9v1.2h.1c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7z" fill="#0a66c2"/>
+        </svg>
+        <span class="logo-text">ADMIN PORTAL</span>
+      </div>
+      <button id="btn-logout" class="btn-logout hidden">Logout</button>
+    </div>
+  </header>
+
+  <main class="main-content">
+    
+    <!-- Login Screen -->
+    <div id="login-container" class="card-container">
+      <div class="admin-badge">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="48" height="48">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z" fill="#0a66c2"/>
+        </svg>
+      </div>
+      <h1 class="card-title">Admin Authentication</h1>
+      <p class="card-subtitle">Enter your administrator password to view redemption logs.</p>
+      
+      <form id="login-form" class="admin-form">
+        <div class="input-group">
+          <label for="admin-password" class="input-label">Admin Password</label>
+          <input type="password" id="admin-password" required placeholder="Enter password...">
+          <div id="login-error" class="error-message"></div>
+        </div>
+        <button type="submit" class="btn-primary">Unlock Dashboard</button>
+      </form>
+    </div>
+
+    <!-- Log Dashboard Screen -->
+    <div id="dashboard-container" class="dashboard-card hidden">
+      <div class="dashboard-header">
+        <div>
+          <h1 class="dashboard-title">Redemption Logs</h1>
+          <p class="dashboard-subtitle">Real-time status of all code activations and validation attempts.</p>
+        </div>
+        <button id="btn-refresh" class="btn-secondary">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+            <path d="M17.65 6.35A7.95 7.95 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/>
+          </svg>
+          Refresh Logs
+        </button>
+      </div>
+
+      <div class="table-wrapper">
+        <table class="logs-table">
+          <thead>
+            <tr>
+              <th>Date & Time</th>
+              <th>Code Entered</th>
+              <th>Status</th>
+              <th>IP Address</th>
+              <th>Browser / Device</th>
+            </tr>
+          </thead>
+          <tbody id="logs-tbody">
+            <!-- Dynamically populated -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+  </main>
+
+  <footer class="footer">
+    <p class="footer-copyright">LinkedIn Claims Admin © 2026</p>
+  </footer>
+
+  <script src="admin.js"></script>
+</body>
+</html>
