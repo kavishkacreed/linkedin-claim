@@ -63,7 +63,9 @@ app.post('/api/claim', async (req, res) => {
     }
 
     // 2. Mark code as used in Supabase
-    const clientIp = req.headers['x-forwarded-for'] || req.socket.remoteAddress;
+    const clientIp = req.headers['x-real-ip'] || 
+                     (req.headers['x-forwarded-for'] ? req.headers['x-forwarded-for'].split(',')[0].trim() : null) || 
+                     req.socket.remoteAddress;
     const { error: updateError } = await supabase
       .from('claim_codes')
       .update({

@@ -130,17 +130,18 @@ async function run() {
       }
 
       console.log('\nClaim Codes List (Supabase):');
-      console.log('------------------------------------------------------------');
-      console.log(`${'Code'.padEnd(16)} | ${'Status'.padEnd(8)} | ${'Redeemed At'.padEnd(25)}`);
-      console.log('------------------------------------------------------------');
+      console.log('-------------------------------------------------------------------------------------');
+      console.log(`${'Code'.padEnd(16)} | ${'Status'.padEnd(8)} | ${'Redeemed At'.padEnd(25)} | ${'IP Address'.padEnd(15)}`);
+      console.log('-------------------------------------------------------------------------------------');
       
       codes.forEach(info => {
         const status = info.used ? 'USED' : 'ACTIVE';
         const redeemed = info.redeemed_at ? info.redeemed_at : 'N/A';
-        console.log(`${info.code.padEnd(16)} | ${status.padEnd(8)} | ${redeemed.padEnd(25)}`);
+        const ip = info.ip ? info.ip : 'N/A';
+        console.log(`${info.code.padEnd(16)} | ${status.padEnd(8)} | ${redeemed.padEnd(25)} | ${ip.padEnd(15)}`);
       });
       
-      console.log('------------------------------------------------------------');
+      console.log('-------------------------------------------------------------------------------------');
       console.log(`Total Codes: ${codes.length}`);
       break;
     }
